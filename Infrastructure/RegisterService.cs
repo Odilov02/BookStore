@@ -22,6 +22,8 @@ public static class RegisterService
         services.AddScoped<IAuthorService, AuthorService>();
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<IFileService, FileService>();
+        services.AddScoped<IUserService, UserSevice>();
         return services;
+
     }
 }

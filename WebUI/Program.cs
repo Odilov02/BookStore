@@ -1,5 +1,7 @@
 using Infrastructure;
-
+using Infrastructure.DataAcces;
+using Microsoft.AspNetCore.Identity;
+using Application;
 namespace WebUI
 {
     public class Program
@@ -10,9 +12,9 @@ namespace WebUI
 
             builder.Services.AddControllersWithViews();
             var configuration = builder.Configuration;
-
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
             builder.Services.AddInfrastructureServices(configuration);
-
+            builder.Services.AddApplicationServices(configuration);
             var app = builder.Build();
 
             if (!app.Environment.IsDevelopment())
@@ -30,8 +32,7 @@ namespace WebUI
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
-
+                pattern: "{controller=User}/{action=Login}/{id?}");
             app.Run();
         }
     }
