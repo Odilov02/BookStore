@@ -187,6 +187,10 @@ namespace Infrastructure.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
 
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
 
@@ -234,15 +238,16 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4a6c6235-6cc6-493e-bfa3-7840ff66c9a3",
+                            Id = "72f041b5-fa35-43a1-abb7-72b3eb8c2b2e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1e57e9a3-1635-41d7-ba07-60924afbff0a",
+                            ConcurrencyStamp = "c25e5a7e-e5af-4fbb-8d18-d8b67b97858a",
                             Email = "diyorbek02odilov@gmail.com",
                             EmailConfirmed = false,
+                            FullName = "Diyorbek",
                             LockoutEnabled = false,
                             PasswordHash = "020819",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "31fef1c2-3a97-49c8-ab2a-dc919d278e0f",
+                            SecurityStamp = "66c5a9b9-6cbd-4f3f-b615-83b847143078",
                             TwoFactorEnabled = false,
                             UserName = "diyorbek02odilov@gmail.com"
                         });

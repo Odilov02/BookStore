@@ -25,6 +25,7 @@ public class AppDbContext : IdentityDbContext<User>, IApplicatonDbcontext
         builder.Entity<User>().HasData(
             new User()
             {
+                FullName="Diyorbek",
                 Email = "diyorbek02odilov@gmail.com",
                 UserName = "diyorbek02odilov@gmail.com",
                 PasswordHash="020819",

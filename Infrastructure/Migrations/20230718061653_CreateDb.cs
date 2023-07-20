@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class createDb : Migration
+    public partial class CreateDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,6 +31,7 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
+                    FullName = table.Column<string>(type: "text", nullable: false),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -248,8 +249,8 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "4a6c6235-6cc6-493e-bfa3-7840ff66c9a3", 0, "1e57e9a3-1635-41d7-ba07-60924afbff0a", "diyorbek02odilov@gmail.com", false, false, null, null, null, "020819", null, false, "31fef1c2-3a97-49c8-ab2a-dc919d278e0f", false, "diyorbek02odilov@gmail.com" });
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "72f041b5-fa35-43a1-abb7-72b3eb8c2b2e", 0, "c25e5a7e-e5af-4fbb-8d18-d8b67b97858a", "diyorbek02odilov@gmail.com", false, "Diyorbek", false, null, null, null, "020819", null, false, "66c5a9b9-6cbd-4f3f-b615-83b847143078", false, "diyorbek02odilov@gmail.com" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

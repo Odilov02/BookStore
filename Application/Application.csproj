@@ -22,4 +22,16 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCases\Author\Command\" />
+    <Folder Include="UseCases\Author\Query\" />
+    <Folder Include="UseCases\Book\Command\" />
+    <Folder Include="UseCases\Book\Query\" />
+    <Folder Include="UseCases\Category\Command\" />
+    <Folder Include="UseCases\Category\Query\" />
+    <Folder Include="UseCases\Commentary\Command\" />
+    <Folder Include="UseCases\Commentary\Query\" />
+    <Folder Include="UseCases\Role\Query\" />
+  </ItemGroup>
+
 </Project>

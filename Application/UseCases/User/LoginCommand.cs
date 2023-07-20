@@ -10,11 +10,10 @@ namespace Application.UseCase.Users
 {
     public class LoginCommand : IRequest<bool>
     {
-        public string email { get; set; }
+        [Required]
+        public string Email { get; set; }
         [DataType(DataType.Password)]
-        public string password { get; set; }
-        [Compare("password")]
-        public string conformPassword { get; set; }
+        public string Password { get; set; }
     }
 
     public class LoginCommondHandler : BaseCommand, IRequestHandler<LoginCommand, bool>
@@ -29,7 +28,7 @@ namespace Application.UseCase.Users
 
         public async Task<bool> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            var user = (await _userService.GetAll()).FirstOrDefault(x => x.Email == request.email&&x.PasswordHash==request.password.stringHash());
+            var user = (await _userService.GetAll()).FirstOrDefault(x => x.Email == request.Email&&x.PasswordHash==request.Password.stringHash());
             if (user == null) return false;
             await _signInManager.SignInAsync(user!, true);
             return true;

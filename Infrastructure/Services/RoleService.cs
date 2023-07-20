@@ -57,16 +57,5 @@ namespace Infrastructure.Services
            var result= await  _roleManager.UpdateAsync(entity);
             return result.Succeeded;
         }
-
-        public async Task<bool> UpdateForPermission(Role role)
-        {
-            var identityRole=await _roleManager.Roles.SingleOrDefaultAsync(x=>x.Id==role.Id.ToString());
-            if (identityRole == null) return false;
-            foreach (var permission in role.Permissions)
-            {
-            await _roleManager.AddClaimAsync(identityRole, new System.Security.Claims.Claim( "Permission", permission.name ));
-            }
-            return true;
-        }
     }
 }

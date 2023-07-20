@@ -11,19 +11,21 @@ namespace WebUI.Controllers
         private readonly IMediator _mediatR;
         private readonly UserManager<User> _userManager;
 
-        public UserController(IMediator mediatR,UserManager<User> userManager)
+        public UserController(IMediator mediatR, UserManager<User> userManager)
         {
             _mediatR = mediatR;
             _userManager = userManager;
         }
         public IActionResult Login()
         {
+            ViewBag.Layout = null;
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> Login(LoginCommand loginCommand)
         {
-            await _mediatR.Send(loginCommand);
+            var result = await _mediatR.Send(loginCommand);
+                return RedirectToAction("GetAllBook", "Book");
             return View();
         }
     }
