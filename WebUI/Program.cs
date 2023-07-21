@@ -1,7 +1,7 @@
 using Application;
 using Domain.Entities;
 using Infrastructure;
-using Infrastructure.DataAcces;
+using Infrastructure.Persistance;
 using Microsoft.AspNetCore.Identity;
 
 namespace WebUI
@@ -15,7 +15,7 @@ namespace WebUI
             builder.Services.AddControllersWithViews();
             var configuration = builder.Configuration;
             builder.Services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<AppDbContext>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddSignInManager();
             builder.Services.AddInfrastructureServices(configuration);
             builder.Services.AddApplicationServices(configuration);
