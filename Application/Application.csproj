@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+	  <PackageReference Include="AutoMapper" Version="12.0.1" />
+	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
 	  <PackageReference Include="MediatR" Version="12.1.1" />
 	  <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
 	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.9" />
@@ -23,15 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\Author\Command\" />
-    <Folder Include="UseCases\Author\Query\" />
-    <Folder Include="UseCases\Book\Command\" />
-    <Folder Include="UseCases\Book\Query\" />
-    <Folder Include="UseCases\Category\Command\" />
-    <Folder Include="UseCases\Category\Query\" />
-    <Folder Include="UseCases\Commentary\Command\" />
-    <Folder Include="UseCases\Commentary\Query\" />
-    <Folder Include="UseCases\Role\Query\" />
+    <Folder Include="Comman\Services\" />
+    <Folder Include="UseCases\Roles\Query\" />
   </ItemGroup>
 
 </Project>
