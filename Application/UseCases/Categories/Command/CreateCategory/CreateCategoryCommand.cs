@@ -1,10 +1,7 @@
 ﻿namespace Application.UseCases.Categories.Command.CreateCategory;
 
-public class CreateCategoryCommand : IRequest<bool>
-{
-    public string name { get; set; }
-    public string Descraption { get; set; }
-}
+public record CreateCategoryCommand(string name, string Descraption) : IRequest<bool>;
+
 public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, bool>
 {
     private readonly IMapper _mapper;

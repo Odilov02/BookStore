@@ -1,14 +1,7 @@
 ﻿namespace Application.UseCases.Authors.Command.UpdateAuthor;
 
-public class UpdateAuthorCommand : IRequest<bool>
-{
-    public Guid Id { get; set; }
-    public string FullName { get; set; }
+public record UpdateAuthorCommand(Guid Id, string FullName, string ImgUrl, string Description) : IRequest<bool>;
 
-    public string ImgUrl { get; set; }
-
-    public string Description { get; set; }
-}
 public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommand, bool>
 {
     private readonly IApplicatonDbcontext _dbContext;

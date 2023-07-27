@@ -1,9 +1,6 @@
 ﻿namespace Application.UseCases.Commentaries.Command.DeleteCommentary;
 
-public class DeleteCommentaryCommand : IRequest<bool>
-{
-    public Guid Id { get; set; }
-}
+public record DeleteCommentaryCommand(Guid Id) : IRequest<bool>;
 public class DeleteCommentaryCommandHandler : IRequestHandler<DeleteCommentaryCommand, bool>
 {
     private readonly IApplicatonDbcontext _dbcontext;

@@ -1,9 +1,6 @@
 ﻿namespace Application.UseCases.Books.Query.GetBook;
 
-public class GetBookQuery : IRequest<Book?>
-{
-    public Guid Id { get; set; }
-}
+public record GetBookQuery(Guid Id) : IRequest<Book?>;
 public class GetBookQueryHandler : IRequestHandler<GetBookQuery, Book?>
 {
     private readonly IApplicatonDbcontext _dbcontext;

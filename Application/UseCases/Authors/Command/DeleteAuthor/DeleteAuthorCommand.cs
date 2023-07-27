@@ -1,18 +1,10 @@
 ﻿namespace Application.UseCases.Authors.Command.DeleteAuthor;
 
-public class DeleteAuthorCommand : IRequest<bool>
-{
-    public Guid Id { get; set; }
-}
-
+public record DeleteAuthorCommand(Guid Id) : IRequest<bool>;
 public class DeleteAuthorCommandHandler : IRequestHandler<DeleteAuthorCommand, bool>
 {
     private readonly IApplicatonDbcontext _context;
-    public DeleteAuthorCommandHandler(IApplicatonDbcontext context)
-    {
-        _context = context;
-    }
-
+    public DeleteAuthorCommandHandler(IApplicatonDbcontext context) => _context = context;
     public async Task<bool> Handle(DeleteAuthorCommand request, CancellationToken cancellationToken)
     {
         var author = _context.Authors.ToList().FirstOrDefault(x => x.Id == request.Id);

@@ -1,17 +1,12 @@
 ﻿namespace Application.UseCases.Categories.Command.DeleteCategory;
 
-public class DeleteCategoryCommand : IRequest<bool>
-{
-    public Guid Id { get; set; }
-}
+public record DeleteCategoryCommand(Guid Id) : IRequest<bool>;
+
 public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryCommand, bool>
 {
     private readonly IApplicatonDbcontext _dbContext;
 
-    public DeleteCategoryCommandHandler(IApplicatonDbcontext dbContext)
-    {
-        _dbContext = dbContext;
-    }
+    public DeleteCategoryCommandHandler(IApplicatonDbcontext dbContext) => _dbContext = dbContext;
     public async Task<bool> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
     {
         Category? category = await _dbContext.Categories.FirstOrDefaultAsync(c => c.Id == request.Id);

@@ -1,10 +1,7 @@
 ﻿namespace Application.UseCases.Authors.Query.GetAllAuthor;
 
-public class GetAllAuthorQuery : IRequest<PaginatedList<Author>>
-{
-    public int PageSize { get; set; }
-    public int PageIndex { get; set; }
-}
+public record GetAllAuthorQuery (int PageSize, int PageIndex) : IRequest<PaginatedList<Author>>;
+
 public class GetAllAuthorQueryHandler : IRequestHandler<GetAllAuthorQuery, PaginatedList<Author>>
 {
     private readonly IApplicatonDbcontext _dbcontext;

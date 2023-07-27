@@ -1,10 +1,6 @@
 ﻿namespace Application.UseCases.Categories.Query.GetAllCategory;
 
-public class GetAllCategoryQuery : IRequest<PaginatedList<Category>>
-{
-    public int PageSize { get; set; }
-    public int PageIndex { get; set; }
-}
+public record GetAllCategoryQuery(int PageSize, int PageIndex) : IRequest<PaginatedList<Category>>;
 public class GetAllCategoryQueryHandler : IRequestHandler<GetAllCategoryQuery, PaginatedList<Category>>
 {
     IApplicatonDbcontext _dbContext;

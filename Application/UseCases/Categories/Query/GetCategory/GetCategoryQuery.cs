@@ -1,18 +1,11 @@
 ﻿namespace Application.UseCases.Categories.Query.GetCategory;
 
-public class GetCategoryQuery : IRequest<Category>
-{
-    public Guid Id { get; set; }
-}
-
+public record GetCategoryQuery(Guid Id) : IRequest<Category>;
 
 public class GetCAtegoryQueryHAndler : IRequestHandler<GetCategoryQuery, Category>
 {
     private readonly IApplicatonDbcontext _dbContext;
-    public GetCAtegoryQueryHAndler(IApplicatonDbcontext dbContext)
-    {
-        _dbContext = dbContext;
-    }
+    public GetCAtegoryQueryHAndler(IApplicatonDbcontext dbContext) => _dbContext = dbContext;
 
     public async Task<Category> Handle(GetCategoryQuery request, CancellationToken cancellationToken)
     {

@@ -1,11 +1,6 @@
 ﻿namespace Application.UseCases.Commentaries.Command.CreateCommentary;
 
-public class CreateCommentaryCommand : IRequest<bool>
-{
-    public string Description { get; set; }
-    public Guid BookId { get; set; }
-    public string UserId { get; set; }
-}
+public record CreateCommentaryCommand(Guid BookId, string Description, string UserId) : IRequest<bool>;
 public class CreateCommentaryCommandHandler : IRequestHandler<CreateCommentaryCommand, bool>
 {
     private readonly IApplicatonDbcontext _dbContext;

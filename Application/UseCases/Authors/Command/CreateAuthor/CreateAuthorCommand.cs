@@ -1,15 +1,7 @@
 ﻿
 namespace Application.UseCases.Authors.Command.CreateAuthor;
 
-public class CreateAuthorCommand : IRequest<bool>
-{
-    public string FullName { get; set; }
-
-    public string ImgUrl { get; set; }
-
-    public string Description { get; set; }
-}
-
+public record CreateAuthorCommand(string FullName, string ImgUrl, string Description) : IRequest<bool>;
 public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommand, bool>
 {
     private readonly IApplicatonDbcontext _dbContext;

@@ -1,9 +1,6 @@
 ﻿namespace Application.UseCases.Books.Command.DeleteBook;
 
-public class DeleteBookCommand : IRequest<bool>
-{
-    public Guid Id { get; set; }
-}
+public record DeleteBookCommand(Guid Id) : IRequest<bool>;
 
 public class DeleteBookCommandHandler : IRequestHandler<DeleteBookCommand, bool>
 {

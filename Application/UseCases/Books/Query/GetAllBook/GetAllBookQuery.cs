@@ -1,10 +1,6 @@
 ﻿namespace Application.UseCases.Books.Query.GetAllBook;
 
-public class GetAllBookQuery : IRequest<PaginatedList<Book>>
-{
-    public int PageIndex { get; set; }
-    public int PageSize { get; set; }
-}
+public record GetAllBookQuery(int PageIndex, int PageSize) : IRequest<PaginatedList<Book>>;
 public class GetAllBookQueryHandler : IRequestHandler<GetAllBookQuery, PaginatedList<Book>>
 {
     private readonly IApplicatonDbcontext _dbContext;

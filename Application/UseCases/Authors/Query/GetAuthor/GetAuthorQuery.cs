@@ -1,9 +1,6 @@
 ﻿namespace Application.UseCases.Authors.Query.GetAuthor;
 
-public class GetAuthorQuery : IRequest<Author>
-{
-    public Guid Id { get; set; }
-}
+public record GetAuthorQuery(Guid Id) : IRequest<Author>;
 
 public class GetAuthorQueryHandler : IRequestHandler<GetAuthorQuery, Author>
 {

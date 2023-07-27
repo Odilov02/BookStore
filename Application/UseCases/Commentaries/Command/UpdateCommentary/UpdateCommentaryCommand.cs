@@ -1,12 +1,7 @@
 ﻿namespace Application.UseCases.Commentaries.Command.UpdateCommentary;
 
-public class UpdateCommentaryCommand : IRequest<bool>
-{
-    public Guid Id { get; set; }
-    public string Description { get; set; }
-    public Guid BookId { get; set; }
-    public string UserId { get; set; }
-}
+public record UpdateCommentaryCommand(Guid Id, string Description, Guid BookId, string UserId) : IRequest<bool>;
+
 public class UpdateCommentaryCommandHandler : IRequestHandler<UpdateCommentaryCommand, bool>
 {
     private readonly IApplicatonDbcontext _dbContext;

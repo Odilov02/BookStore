@@ -1,24 +1,16 @@
 ﻿namespace Application.UseCases.Categories.Command.UpdateCategory;
 
-public class UpdateCategoryCommand : IRequest<bool>
-{
-    public Guid Id { get; set; }
-    public string name { get; set; }
-    public string Descraption { get; set; }
-}
+public record UpdateCategoryCommand(Guid Id, string name, string Descraption) : IRequest<bool>;
+
 public class UpdateCategoryCommandHandler : IRequestHandler<UpdateCategoryCommand, bool>
 {
     private readonly IApplicatonDbcontext _dbContext;
     private readonly IMapper _mapper;
-
     public UpdateCategoryCommandHandler(IApplicatonDbcontext dbContext, IMapper mapper = null)
     {
         _dbContext = dbContext;
         _mapper = mapper;
     }
-
-
-
     public async Task<bool> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
     {
         var category = _mapper.Map<Category>(request);
