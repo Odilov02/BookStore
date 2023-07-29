@@ -26,7 +26,10 @@
 
   <ItemGroup>
     <Folder Include="Comman\Services\" />
-    <Folder Include="UseCases\Roles\Query\" />
+    <Folder Include="UseCases\Baskets\Command\" />
+    <Folder Include="UseCases\Baskets\Query\" />
+    <Folder Include="UseCases\Orders\Command\" />
+    <Folder Include="UseCases\Orders\Query\" />
   </ItemGroup>
 
 </Project>

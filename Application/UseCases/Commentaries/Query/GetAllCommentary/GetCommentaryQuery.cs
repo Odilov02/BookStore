@@ -1,9 +1,6 @@
 ﻿namespace Application.UseCases.Commentaries.Query.GetAllCommentary;
 
-public class GetCommentaryQuery : IRequest<Commentary?>
-{
-    public Guid Id { get; set; }
-}
+public record GetCommentaryQuery(Guid Id) : IRequest<Commentary?>;
 public class GetCommentaryQueryHandler : IRequestHandler<GetCommentaryQuery, Commentary?>
 {
     private readonly IApplicatonDbcontext _dbcontext;

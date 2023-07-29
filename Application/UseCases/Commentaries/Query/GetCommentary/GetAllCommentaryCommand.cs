@@ -1,10 +1,6 @@
 ﻿namespace Application.UseCases.Commentaries.Query.GetCommentary;
 
-public class GetAllCommentaryCommand : IRequest<PaginatedList<Commentary>>
-{
-    public int PageSize { get; set; }
-    public int PageIndex { get; set; }
-}
+public record GetAllCommentaryCommand(int PageSize, int PageIndex) : IRequest<PaginatedList<Commentary>>;
 
 public class GetAllCommentaryCommentaryHandler : IRequestHandler<GetAllCommentaryCommand, PaginatedList<Commentary>>
 {

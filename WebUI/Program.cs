@@ -32,7 +32,7 @@ public class Program
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=User}/{action=Login}/{id?}");
+            pattern: "{controller=Category}/{action=Index}/{id?}");
         app.Run();
     }
 }
