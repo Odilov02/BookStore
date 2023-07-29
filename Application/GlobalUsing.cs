@@ -5,3 +5,4 @@ global using Domain.Entities;
 global using MediatR;
 global using Microsoft.AspNetCore.Identity;
 global using Microsoft.EntityFrameworkCore;
+

@@ -1,6 +1,5 @@
 using Application;
 using Infrastructure;
-
 namespace WebUI;
 
 public class Program

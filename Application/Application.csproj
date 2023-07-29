@@ -26,10 +26,11 @@
 
   <ItemGroup>
     <Folder Include="Comman\Services\" />
-    <Folder Include="UseCases\Baskets\Command\" />
-    <Folder Include="UseCases\Baskets\Query\" />
-    <Folder Include="UseCases\Orders\Command\" />
-    <Folder Include="UseCases\Orders\Query\" />
+    <Folder Include="UseCases\Orders\Command\CreateOrder\" />
+    <Folder Include="UseCases\Orders\Command\DeleteOrder\" />
+    <Folder Include="UseCases\Orders\Command\UpdateOrder\" />
+    <Folder Include="UseCases\Orders\Query\GetOrder\" />
+    <Folder Include="UseCases\Orders\Query\GetAllOrder\" />
   </ItemGroup>
 
 </Project>
