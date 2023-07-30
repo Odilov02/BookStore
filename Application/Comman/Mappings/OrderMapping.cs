@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application.UseCases.Orders.Command.CreateOrder;
 
 namespace Application.Comman.Mappings
 {
-    internal class OrderMapping
+    public class OrderMapping:Profile
     {
+        public OrderMapping()
+        {
+            OrderMap();
+        }
+        void OrderMap()
+        {
+            CreateMap<CreateOrderCommand, Order>();
+        }
     }
 }

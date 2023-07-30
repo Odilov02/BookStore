@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Application.UseCases.Orders.Command.DeleteOrder;
 
-namespace Application.UseCases.Orders.Command.DeleteOrder
+public record DeleteOrderCommand(Guid Id) : IRequest<bool>;
+public record DeleteOrderCommandhandler : IRequestHandler<DeleteOrderCommand, bool>
 {
-    internal class DeleteOrderCommand
+    private readonly IApplicatonDbcontext _dbcontext;
+    public DeleteOrderCommandhandler(IApplicatonDbcontext dbcontext) => _dbcontext = dbcontext;
+    public async Task<bool> Handle(DeleteOrderCommand request, CancellationToken cancellationToken)
     {
+        var order = await _dbcontext.Orders.FirstOrDefaultAsync(x => x.Id == request.Id);
+        if (order == null) return false;
+        _dbcontext.Orders.Remove(order);
+        await _dbcontext.SaveChangesAsync(cancellationToken);
+        return true;
     }
 }

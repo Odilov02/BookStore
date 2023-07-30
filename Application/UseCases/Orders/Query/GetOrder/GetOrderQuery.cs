@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Application.UseCases.Orders.Query.GetOrder;
 
-namespace Application.UseCases.Orders.Query.GetOrder
+public record GetOrderQuery(Guid Id) : IRequest<Order>;
+
+public record GetOrderQueryHandler : IRequestHandler<GetOrderQuery, Order>
 {
-    internal class GetOrderQuery
+    private readonly IApplicatonDbcontext _dbcontext;
+    public GetOrderQueryHandler(IApplicatonDbcontext dbcontext) => _dbcontext = dbcontext;
+    public async Task<Order> Handle(GetOrderQuery request, CancellationToken cancellationToken)
     {
+        var order = await _dbcontext.Orders.FirstOrDefaultAsync(o => o.Id == request.Id);
+        if (order == null) return new Order();
+        return order;
     }
 }
