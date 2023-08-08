@@ -1,36 +1,31 @@
 ﻿using Application.Comman.Interfaces;
-using Domain.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Infrastructure.Persistance.Interceptors;
+namespace Infrastructure.Persistance;
 
-namespace Infrastructure.Persistance
+public class ApplicationDbContext : IdentityDbContext<User>, IApplicatonDbcontext
 {
-    public class ApplicationDbContext : IdentityDbContext<User>, IApplicatonDbcontext
+    private readonly AuditableEntitySaveChangesnterceptor _auditableEntitySaveChangesnterceptor;
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, AuditableEntitySaveChangesnterceptor auditableEntitySaveChangesnterceptor)
+        : base(options)
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
-        public DbSet<Book> Books { get; set; }
-        public DbSet<Commentary> Commentaries { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Author> Authors { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Basket> Baskets { get; set; }
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            base.OnModelCreating(builder);
-            builder.Entity<User>().HasData(
-                new User()
-                {
-                    FullName = "Diyorbek",
-                    Email = "diyorbek02odilov@gmail.com",
-                    UserName = "diyorbek02odilov@gmail.com",
-                    PasswordHash = "020819",
-                }
-                );
-        }
+        _auditableEntitySaveChangesnterceptor = auditableEntitySaveChangesnterceptor;
+    }
+    public DbSet<Book> Books { get; set; }
+    public DbSet<Commentary> Commentaries { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Author> Authors { get; set; }
+    public DbSet<Order> Orders { get; set; }
+    public DbSet<Basket> Baskets { get; set; }
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        base.OnModelCreating(builder);
+    }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.AddInterceptors(_auditableEntitySaveChangesnterceptor);
+        base.OnConfiguring(optionsBuilder);
     }
 }
