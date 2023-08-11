@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "_DefaultLayout";
+    ViewData["Title"] = "Login";
+}
+@model LoginUserCommand;
+    <div class="container my-5">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-10 col-lg-6   px-5 py-5 text-light rounded-4" style="background-color: rgb(44, 68, 64);">
+                <form method="post" asp-action="Login">
+                    <h3 class="mx-5 my-4 px-5"><strong>Login</strong></h3>
+                    <div class="mb-3">
+                        <label class="form-label mx-3" for="UserName"><strong>UserName</strong></label>
+                    <input id="UserName" class="form-control" type="text" name="UserName" placeholder="Enter UserName">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label mx-3" for="Password"><strong>Password</strong></label>
+                    <input id="Password" class="form-control" type="password" name="Password" placeholder="Enter Password">
+                    </div>
+                    <div class="row py-4">
+                        <div class="col-5">
+                            <button type="submit" class="btn btn-success mx-3 px-4"><strong>Login</strong></button>
+                        </div>
+                        <div class="col-7">
+                            <ul class="nav">
+                                <li class="nav-item"> <a class="nav-link text-info" href="#">Forgot password?</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12">
+                            <p class="my-3 mx-3"><strong>Don't have an account?</strong> <a class="text-danger" href="#"><strong>Register</strong></a></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>

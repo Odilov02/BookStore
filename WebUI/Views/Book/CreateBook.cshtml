@@ -1,0 +1,109 @@
+﻿@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Create Book";
+}
+@model CreateBookCommand;
+<div class="container"> 
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-12 col-lg-10 shadow-lg p-4  mt-5 bg-body-tertiary rounded">
+            <div class="border rounded border-1" style="background-color: rgb(235, 224, 220);">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-10 mt-5">
+                        <h3 class="mb-3 mx-5  text-secondary"><strong>Create Book</strong></h3>
+                        <form enctype="multipart/form-data" method="post">
+                            <div class="row">
+                                <div class="col-lg-6 col-12">
+                                    <div class="mb-3">
+                                        <label class="form-label mx-3 text-secondary" for="Name"><strong>Book Name</strong></label>
+                                        <input class="form-control" name="Name" id="Name" type="text" placeholder="Enter Book Name">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-12">
+                                    <div class="mb-2">
+                                        <label class="form-label mx-3 text-secondary" for="Language"><strong>Language</strong></label>
+                                        <input class="form-control" id="Language" name="Language" type="text" placeholder="Enter language">
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label class="form-label mx-3 text-secondary" for="Name"><strong>Descraption</strong></label>
+                                        <textarea class="form-control" name="Description" id="Descraption" cols="87" rows="4" placeholder="Enter Descraption"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label mx-3 text-secondary" for="Count"><strong>Count</strong></label>
+                                        <input class="form-control" name="Count" id="Count" type="number" placeholder="Enter Count">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label mx-3 text-secondary" for="Price"><strong>Price</strong></label>
+                                        <input class="form-control" name="Price" id="Price" type="number" placeholder="Enter Price">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label mx-3 text-secondary" for="Name"><strong>Page Count</strong></label>
+                                        <input class="form-control" name="PageCount" id="PageCount" type="number" placeholder="Enter Page Count">
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label mx-3 text-secondary" for="Author"><strong>Author</strong></label>
+                                        <select class="form-select form-select mb-3" id="Author" name="Author" aria-label="Large select example">
+                                            <option selected>Hamid Olimjon</option>
+                                            <option value="@Guid.NewGuid()">One</option>
+                                            <option value="@Guid.NewGuid()">Two</option>
+                                            <option value="@Guid.NewGuid()">Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label mx-3 text-secondary" for="Category"><strong>Category</strong></label>
+                                        <select class="form-select form-select mb-3" id="Category" name="Category" aria-label="Large select example">
+                                            <option selected>Hamid Olimjon</option>
+                                            <option value="@Guid.NewGuid()">One</option>
+                                            <option value="@Guid.NewGuid()">Two</option>
+                                            <option value="@Guid.NewGuid()">Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-7">
+                                    <div class="mb-4">
+                                        <label class="form-label mx-3 text-secondary" for="Img"><strong>Book Photo</strong></label>
+                                        <input class="form-control" name="Img" id="Img" type="file">
+                                    </div>
+                                </div>
+                                <div class="col-5"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn  btn-success m-3 px-4" type="submit">Submit</button>
+                                </div>
+                                <div class="col-6 col-md-4  m-3 justify-content-end">
+                                    <a class="btn btn-primary text-light px-4" href="#">To Back</a>
+                                </div>
+                            </div>
+                        </form>
+                        <br>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>

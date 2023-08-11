@@ -1,7 +1,8 @@
 ﻿using Application.Comman.Interfaces;
+using Infrastructure.Persistance.Interceptors;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Reflection;
-using Infrastructure.Persistance.Interceptors;
+
 namespace Infrastructure.Persistance;
 
 public class ApplicationDbContext : IdentityDbContext<User>, IApplicatonDbcontext

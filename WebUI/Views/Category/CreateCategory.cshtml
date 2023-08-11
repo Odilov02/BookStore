@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Category";
+}
+@model CreateCategoryCommand;
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-9 shadow-lg p-4  mt-5 bg-body-tertiary rounded">
+            <div class="border rounded border-1" style="background-color: rgb(199, 210, 230);">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-10 mt-5">
+                        <h3 class="mb-4 mx-5 text-secondary"><strong>Create Category</strong></h3>
+                        <form method="post">
+                            <div class="mb-3">
+                                <label class="form-label mx-3 text-secondary" for="Name"><strong>Category Name</strong></label>
+                                <input class="form-control" id="Name" name="Name" type="text">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label mx-3 text-secondary" for="Name"><strong>Description</strong></label>
+                                <textarea class="form-control" name="Description" id="Description" cols="87" rows="4"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn  btn-success m-3 px-4">Submit</button>
+                                </div>
+                                <div class="col-6 col-md-4  m-3 justify-content-end">
+                                    <a  class="btn btn-primary text-light px-4" href="#">To Back</a>
+                                </div>
+                            </div>
+                        </form>
+                        <br>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>

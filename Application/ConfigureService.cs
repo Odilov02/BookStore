@@ -1,5 +1,4 @@
-﻿using FluentValidation.AspNetCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 namespace Application;
 public static class ConfigureService

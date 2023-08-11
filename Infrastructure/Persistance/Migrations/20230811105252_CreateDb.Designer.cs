@@ -9,18 +9,18 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Infrastructure.Migrations
+namespace Infrastructure.Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230804125931_init1")]
-    partial class init1
+    [Migration("20230811105252_CreateDb")]
+    partial class CreateDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.9")
+                .HasAnnotation("ProductVersion", "7.0.10")
                 .HasAnnotation("Proxies:ChangeTracking", false)
                 .HasAnnotation("Proxies:CheckEquality", false)
                 .HasAnnotation("Proxies:LazyLoading", true)
@@ -35,7 +35,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -56,7 +56,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("Lasted")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("LastedBy")
                         .IsRequired()
@@ -111,7 +111,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -132,7 +132,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("character varying(50)");
 
                     b.Property<DateTime>("Lasted")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("LastedBy")
                         .IsRequired()
@@ -165,7 +165,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -176,7 +176,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime>("Lasted")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("LastedBy")
                         .IsRequired()
@@ -288,8 +288,11 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
 
-                    b.Property<string>("PasswordHash")
+                    b.Property<string>("Password")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PasswordHash")
                         .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
@@ -330,16 +333,16 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0f4d08e1-8cfe-4710-aebb-6ab2c3c9f4b6",
+                            Id = "f867f289-fc2d-4c67-bd22-b5a72a9b5007",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1a7636aa-53c4-4ed9-a6af-822a03e786bd",
+                            ConcurrencyStamp = "dac764d9-47a9-4f56-a2c3-08e1f734569a",
                             EmailConfirmed = false,
                             FullName = "Diyorbek",
                             LockoutEnabled = false,
-                            PasswordHash = "522e895f759c27cce490109a6409b865019236632164c13559fe9872244f1138",
+                            Password = "522e895f759c27cce490109a6409b865019236632164c13559fe9872244f1138",
                             PhoneNumber = "+998942922288",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "31ca994b-a4da-4894-ab07-fc642595bb65",
+                            SecurityStamp = "a9f77285-0583-4df0-9078-bebca91de934",
                             TwoFactorEnabled = false,
                             UserName = "DiyorbekOdilov"
                         });

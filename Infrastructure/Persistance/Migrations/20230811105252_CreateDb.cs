@@ -4,10 +4,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Infrastructure.Migrations
+namespace Infrastructure.Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class init1 : Migration
+    public partial class CreateDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,12 +32,13 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
                     FullName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    Password = table.Column<string>(type: "text", nullable: false),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(type: "boolean", nullable: false),
-                    PasswordHash = table.Column<string>(type: "text", nullable: false),
+                    PasswordHash = table.Column<string>(type: "text", nullable: true),
                     SecurityStamp = table.Column<string>(type: "text", nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "text", nullable: true),
                     PhoneNumber = table.Column<string>(type: "text", nullable: false),
@@ -60,8 +61,8 @@ namespace Infrastructure.Migrations
                     FullName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     ImgUrl = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: false),
-                    Created = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    Lasted = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Lasted = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: false),
                     LastedBy = table.Column<string>(type: "text", nullable: false)
                 },
@@ -77,8 +78,8 @@ namespace Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     Descraption = table.Column<string>(type: "text", nullable: false),
-                    Created = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    Lasted = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Lasted = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: false),
                     LastedBy = table.Column<string>(type: "text", nullable: false)
                 },
@@ -207,8 +208,8 @@ namespace Infrastructure.Migrations
                     Count = table.Column<int>(type: "integer", nullable: false),
                     AuthorId = table.Column<Guid>(type: "uuid", nullable: false),
                     CategoryId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Created = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    Lasted = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Lasted = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     CreatedBy = table.Column<string>(type: "text", nullable: false),
                     LastedBy = table.Column<string>(type: "text", nullable: false)
                 },
@@ -312,8 +313,8 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "0f4d08e1-8cfe-4710-aebb-6ab2c3c9f4b6", 0, "1a7636aa-53c4-4ed9-a6af-822a03e786bd", null, false, "Diyorbek", false, null, null, null, "522e895f759c27cce490109a6409b865019236632164c13559fe9872244f1138", "+998942922288", false, "31ca994b-a4da-4894-ab07-fc642595bb65", false, "DiyorbekOdilov" });
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FullName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "Password", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "f867f289-fc2d-4c67-bd22-b5a72a9b5007", 0, "dac764d9-47a9-4f56-a2c3-08e1f734569a", null, false, "Diyorbek", false, null, null, null, "522e895f759c27cce490109a6409b865019236632164c13559fe9872244f1138", null, "+998942922288", false, "a9f77285-0583-4df0-9078-bebca91de934", false, "DiyorbekOdilov" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

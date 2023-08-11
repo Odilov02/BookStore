@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title> @ViewData["Title"]-BookStore </title>
+</head>
+<body style="background-color: rgb(228, 253, 244);">
+    <nav class="navbar navbar-expand-lg py-3 sticky-top" style="background-color: rgb(80, 80, 114);">
+        <div class="container px-5">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2   mt-1 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link text-info  mx-3"  href="#"><strong>User</strong></a>
+              </li>
+              <li class="nav-item">
+                        <a class="nav-link mx-3  text-info active" aria-current="page" asp-controller="Book" asp-action="GetAllBook"><strong>Book</strong></a>
+              </li>
+              <li class="nav-item">
+                        <a class="nav-link mx-3 text-info" asp-controller="Category" asp-action="GetAllCategory"><strong>Category</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link mx-3 text-info" href="#"><strong>Role</strong></a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link mx-3 text-info" href="#"><strong>Order</strong></a>
+              </li>
+              <li class="nav-item">
+                        <a class="nav-link text-info" style="margin-right: 100px; margin-left: 1rem;" asp-controller="Author" asp-action="GetAllAuthor"><strong>Author</strong></a>
+              </li>
+          </div>
+          <ul class="nav">
+           
+            <li class="nav-tem">
+              <a class="text-light mx-3 " href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                </svg>
+              </a>
+            </li>
+            <li class=" nav-item">
+              <a class="btn px-4 btn-nav btn-outline-info" href="#">
+                <strong>Log Out</strong>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

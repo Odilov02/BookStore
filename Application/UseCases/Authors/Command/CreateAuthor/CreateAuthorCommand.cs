@@ -1,6 +1,8 @@
-﻿namespace Application.UseCases.Authors.Command.CreateAuthor;
+﻿using Microsoft.AspNetCore.Http;
 
-public record CreateAuthorCommand(string FullName, string ImgUrl, string Description) : IRequest<bool>;
+namespace Application.UseCases.Authors.Command.CreateAuthor;
+
+public record CreateAuthorCommand(string FullName, IFormFile Img, string Description) : IRequest<bool>;
 public class CreateAuthorCommandHandler : IRequestHandler<CreateAuthorCommand, bool>
 {
     private readonly IApplicatonDbcontext _dbContext;

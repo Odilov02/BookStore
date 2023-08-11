@@ -1,6 +1,6 @@
 ﻿namespace Application.UseCases.Categories.Command.CreateCategory;
 
-public record CreateCategoryCommand(string name, string Descraption) : IRequest<bool>;
+public record CreateCategoryCommand(string Name, string Description) : IRequest<bool>;
 
 public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryCommand, bool>
 {
@@ -16,7 +16,7 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
     {
         Category category = _mapper.Map<Category>(request);
         await _dbContext.Categories.AddAsync(category, cancellationToken);
-        await _dbContext.SaveChangesAsync(cancellationToken);
-        return true;
+        int result = await _dbContext.SaveChangesAsync(cancellationToken);
+        return result > 0;
     }
 }
