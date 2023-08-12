@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+#nullable disable
 namespace Domain.Entities;
 
 public class User : IdentityUser

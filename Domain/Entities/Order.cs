@@ -1,5 +1,5 @@
 ﻿using Domain.Common;
-
+#nullable disable
 namespace Domain.Entities;
 
 public class Order:BaseEntity

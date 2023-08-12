@@ -1,5 +1,5 @@
 ﻿using Domain.Common;
-
+#nullable disable
 namespace Domain.Entities;
 
 public class Book : BaseAuditableEntity
@@ -15,7 +15,7 @@ public class Book : BaseAuditableEntity
     public virtual Author Author { get; set; }
     public Guid CategoryId { get; set; }
     public virtual Category Category { get; set; }
-    public virtual ICollection<Commentary>? commentaries { get; set; }
-    public virtual ICollection<Basket>? baskets { get; set; }
+    public virtual ICollection<Commentary>? Commentaries { get; set; }
+    public virtual ICollection<Basket>? Baskets { get; set; }
 }
 

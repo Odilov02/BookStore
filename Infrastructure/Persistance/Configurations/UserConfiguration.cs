@@ -6,6 +6,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
+        builder.Property(x => x.Id).IsRequired();
+
         builder.Property(x => x.FullName).IsRequired().HasMaxLength(50);
 
         builder.Property(x => x.PhoneNumber).IsRequired();

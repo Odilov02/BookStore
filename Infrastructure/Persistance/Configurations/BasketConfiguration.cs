@@ -4,6 +4,8 @@ public class BasketConfiguration : IEntityTypeConfiguration<Basket>
 {
     public void Configure(EntityTypeBuilder<Basket> builder)
     {
+        builder.Property(x => x.Id).IsRequired();
+
         builder.Property(x => x.Count).IsRequired();
 
         builder.Property(x => x.Price).IsRequired();

@@ -8,6 +8,6 @@ namespace WebApi.Comman.Services
 
         public CurrentUserService(IHttpContextAccessor contextAccessor) => _contextAccessor = contextAccessor;
 
-        public string UserName => _contextAccessor?.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier)!;
+        public string? UserName => _contextAccessor?.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier)!;
     }
 }
