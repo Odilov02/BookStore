@@ -4,10 +4,8 @@ public record GetAllCategoryQuery(int PageSize, int PageIndex) : IRequest<Pagina
 public class GetAllCategoryQueryHandler : IRequestHandler<GetAllCategoryQuery, PaginatedList<Category>>
 {
     IApplicatonDbcontext _dbContext;
-    public GetAllCategoryQueryHandler(IApplicatonDbcontext dbContext)
-    {
-        _dbContext = dbContext;
-    }
+    public GetAllCategoryQueryHandler(IApplicatonDbcontext dbContext)=> _dbContext = dbContext;
+   
     public Task<PaginatedList<Category>> Handle(GetAllCategoryQuery request, CancellationToken cancellationToken)
     {
         var Categories = _dbContext.Categories.ToList();

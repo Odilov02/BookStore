@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Category";
+}
+@model Category;
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-9 shadow-lg p-4  mt-5 bg-body-tertiary rounded">
+            <div class="border rounded border-1" style="background-color: rgb(202, 209, 219);">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-10 mt-5">
+                        <h3 class="mb-5 mx-5 text-secondary"><strong>Category Details</strong></h3>
+                        <form method="post">
+                            <div class="mb-3">
+                                <input type="hidden" value="@Model.Id" name="Id" />
+                                <label class="form-label mx-3 text-secondary" for="Name"><strong>Category Name</strong></label>
+                                <input class="form-control" name="Name" id="Name" value="@Model.Name" type="text" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label mx-3 text-secondary" for="Description"><strong>Descraption</strong></label>
+                                <textarea class="form-control" name="Description" id="Descraption" cols="87" rows="5" disabled>@Model.Description</textarea>
+                            </div>
+                            <div class="mb-5 mx-4">
+                                 <a href="#"><h5 class="pt-2 "><strong>Books</strong></h5></a>
+                            </div>
+                              <div class="m-3 justify-content-end">
+                                    <a asp-action="GetAllCategory" asp-controller="Category" class="btn btn-primary text-light px-4">To Back</a>
+                              </div>
+                        </form>
+                        <br>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>

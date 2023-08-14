@@ -2,31 +2,32 @@
     Layout = "_AdminLayout";
     ViewData["Title"] = "Category";
 }
-@model CreateCategoryCommand;
+@model UpdateCategoryCommand;
 <div class="container">
     <div class="row">
         <div class="col"></div>
         <div class="col-9 shadow-lg p-4  mt-5 bg-body-tertiary rounded">
-            <div class="border rounded border-1" style="background-color: rgb(199, 210, 230);">
+            <div class="border rounded border-1" style="background-color: rgb(236, 238, 241);">
                 <div class="row">
                     <div class="col"></div>
                     <div class="col-10 mt-5">
-                        <h3 class="mb-4 mx-5 text-secondary"><strong>Create Category</strong></h3>
+                        <h3 class="mb-5 mx-5 text-secondary"><strong>Update Category</strong></h3>
                         <form method="post">
+                            <input type="hidden" name="Id" value="@Model.Id">
                             <div class="mb-3">
                                 <label class="form-label mx-3 text-secondary" for="Name"><strong>Category Name</strong></label>
-                                <input class="form-control" id="Name" name="Name" type="text" placeholder="Enter Category Name">
+                                <input class="form-control" name="Name" id="Name" value="@Model.Name" type="text" placeholder="Enter Category Name">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label mx-3 text-secondary" for="Description"><strong>Description</strong></label>
-                                <textarea class="form-control" name="Description" id="Description" cols="87" rows="4" placeholder="Enter Category Description"></textarea>
+                                <textarea class="form-control" name="Description" id="Description" cols="87" rows="4" placeholder="Enter Category Description">@Model.Description</textarea>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <button type="submit" class="btn  btn-success m-3 px-4">Submit</button>
+                                    <button class="btn m-3 px-4 text-light" type="submit" style="background-color: rgb(23, 33, 117);">Update</button>
                                 </div>
                                 <div class="col-6 col-md-4  m-3 justify-content-end">
-                                    <a asp-action="GetAllCategory" asp-controller="Category" class="btn btn-primary text-light px-4">To Back</a>
+                                    <a class="btn btn-primary text-light px-4" asp-action="GetAllCategory" asp-controller="Category">To Back</a>
                                 </div>
                             </div>
                         </form>

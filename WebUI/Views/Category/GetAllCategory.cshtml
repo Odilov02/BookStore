@@ -2,7 +2,8 @@
     Layout = "_AdminLayout";
     ViewData["Title"] = "Category";
 }
-<div class="container">
+@model PaginatedList<Category>
+<div class="container-fluid">
     <div class="row">
         <div class="col"></div>
         <div class="col-12 col-lg-10 shadow-lg p-4 mt-5 bg-body-tertiary rounded">
@@ -25,9 +26,130 @@
                         <div class="col"><a asp-action="CreateCategory" asp-controller="Category" class="btn btn-primary py-1 px-4 mt-1 text-light ms-4"><h5>Add Category</h5></a></div>
                     </div>
                 </div>
-                <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br> <br><br><br><br><br>
+                
+                @if (Model.items is null || Model.items.Count == 0)
+                {
+                    <h1>Category Not Found</h1>
+                }
+                else
+                {
+                <table class="table table-success table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col"><h4 class="ms-1 text-danger-emphasis"><strong>#</strong></h4></th>
+                                <th scope="col"><h4 class="pt-2 text-danger-emphasis"><strong>Name</strong></h4></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider ">
+                @foreach (var item in Model.items!)
+                    {
+                         int indexPage = Model.items.IndexOf(item) + 1;
+                            <tr>
+                                <td scope="row"><h5 class="ms-1 pt-2 text-danger-emphasis"><strong>
+                                            @indexPage
+                                </strong></h5></td>
+                                 <td><h5 class="pt-2 text-danger-emphasis"><strong>@item.Name</strong></h5></td>
+                                <td>
+                                    <a href="#"><h5 class="pt-2 "><strong>Books</strong></h5></a>
+                                </td>
+                                 <td>
+                                     <a asp-action="GetCategory" asp-controller="Category" asp-route-id="@item.Id"><h5 class="pt-2 ms-lg-4"><strong>Details</strong></h5></a>
+                                  </td>
+                                  <td class=" me-0">
+                                      <div class="d-lg-flex flex-row-reverse ms-md-5 ms-lg-0 me-lg-3">
+                                        <a asp-route-Id="@item.Id" asp-action="DeleteCategory" asp-controller="Category" class="btn btn-danger pb-0 pt-2 "><h5><strong>Delete</strong></h5></a>
+                                          <a asp-route-Id="@item.Id" asp-action="UpdateCategory" asp-controller="Category" class="btn btn-success pb-0 pt-2 px-4"><h5><strong>Edit</strong></h5></a>
+                                    </div>
+                                     </td>
+                            </tr>
+                      }
+                        </tbody>
+                </table>
+                <nav aria-label="..." class="d-flex justify-content-center">
+                    <ul class="pagination pagination">
+                        <li class="page-item">
+                            <a class="page-link" asp-route-pageIndex="1" asp-action="GetAllCategory" asp-controller="Category">1</a>
+                        </li>
+                        @if (Model.PageIndex>=3)
+                        {
+                            int previousIndex = Model.PageIndex - 2;
+                            <li class="page-item" aria-current="page">
+                                <a asp-route-pageIndex="@previousIndex" asp-action="GetAllCategory" asp-controller="Category" class="page-link" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        }
+                        else if (Model.PageIndex >= 2)
+                        {
+                            int previousIndex = Model.PageIndex - 1;
+                            <li class="page-item" aria-current="page">
+                                <a asp-route-pageIndex="@previousIndex" asp-action="GetAllCategory" asp-controller="Category" class="page-link" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        }
+                        else if (Model.PageIndex >= 1)
+                        {
+                            int previousIndex = Model.PageIndex;
+                            <li class="page-item" aria-current="page">
+                                <a asp-route-pageIndex="@previousIndex" asp-action="GetAllCategory" asp-controller="Category" class="page-link" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        }
+
+                        @if (!Model.HasNextPage && Model.PageIndex - 2>0)
+                        {
+                            int PreviousIndex = Model.PageIndex - 2;
+                            <li class="page-item" aria-current="page">
+                                <a asp-route-pageIndex="@PreviousIndex" asp-action="GetAllCategory" asp-controller="Category" class="page-link">@PreviousIndex</a>
+                            </li>
+                        }
+                           @if (Model.HasPreviousPage)
+                           {
+                            int PreviousIndex = Model.PageIndex - 1;
+                            <li class="page-item" aria-current="page">
+                                <a asp-route-pageIndex="@PreviousIndex" asp-action="GetAllCategory" asp-controller="Category" class="page-link">@PreviousIndex</a>
+                                </li>
+                           }
+                           @{
+                             int index = Model.PageIndex;
+                            <li class="page-item  active" aria-current="page">
+                                <a class="page-link" asp-route-pageIndex=" @index" asp-action="GetAllCategory" asp-controller="Category">@index</a>
+                               </li>
+                            }
+                          @if(Model.HasNextPage)
+                          {
+                            index =index + 1;
+                            <li class="page-item" aria-current="page">
+                                <a class="page-link" asp-route-pageIndex=" @index" asp-action="GetAllCategory" asp-controller="Category">@index</a>
+                            </li>
+                          }
+                          @if (Model.TotalPage>=index+1&&!Model.HasPreviousPage)
+                          {
+                            index = index + 1;
+                            <li class="page-item" aria-current="page">
+                                <a class="page-link" asp-route-pageIndex=" @index" asp-action="GetAllCategory" asp-controller="Category">@index</a>
+                            </li>
+                        }
+                            <li class="page-item" aria-current="page">
+                                <a class="page-link" asp-route-pageIndex=" @index" asp-action="GetAllCategory" asp-controller="Category" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                            </li>
+                        <li class="page-item">
+                            <a class="page-link" asp-route-pageIndex=" @Model.TotalPage" asp-action="GetAllCategory" asp-controller="Category">@Model.TotalPage</a>
+                            </li>
+                    </ul>
+                </nav>
+               }
             </div>
         </div>
-        <div class="col"></div>
+       <div class="col">
+
+       </div>
     </div>
 </div>

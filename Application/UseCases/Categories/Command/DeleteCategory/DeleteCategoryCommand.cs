@@ -10,9 +10,9 @@ public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryComman
     public async Task<bool> Handle(DeleteCategoryCommand request, CancellationToken cancellationToken)
     {
         Category? category = await _dbContext.Categories.FirstOrDefaultAsync(c => c.Id == request.Id);
-        if (category == null) return false;
+        if (category is null) throw new NotFoundException();
         _dbContext.Categories.Remove(category);
-        await _dbContext.SaveChangesAsync(cancellationToken);
-        return true;
+        var result = await _dbContext.SaveChangesAsync(cancellationToken);
+        return result > 0;
     }
 }

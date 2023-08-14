@@ -25,20 +25,20 @@ namespace WebUI.Controllers
         {
             var user = _mapper.Map<User>(command);
             user.Password = user.Password.stringHash();
-            var result =await _userManiger.CreateAsync(user);
-            if (result.Succeeded) return View("Login");
+            var result = await _userManiger.CreateAsync(user);
+            if (result.Succeeded) return RedirectToAction("Login");
             return View();
         }
 
         public IActionResult Login() => View();
 
         [HttpPost]
-        public IActionResult Login(LoginUserCommand command)
+        public async Task<IActionResult> Login(LoginUserCommand command)
         {
-           // var result = _mediator.Send(command);
-          //  if (result.Result)
-                return RedirectToAction("CreateBook", "Book");
-           // return View();
+            var result = await _mediator.Send(command);
+            if (result)
+                return RedirectToAction("GetAllBook", "Book");
+            return View();
         }
 
     }
